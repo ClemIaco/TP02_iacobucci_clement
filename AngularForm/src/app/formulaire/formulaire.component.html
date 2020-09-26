@@ -1,55 +1,132 @@
 <h2 id="titlePage">Customer account entry form</h2>
 
 <div class="container">
-    <form id="formSubClient" action="" method="get" class="form-example">
-      <div class="form-group">
+    <form id="formSubClient" class="form-example" #registerForm="ngForm"
+    [appMatchPassword]="['password', 'confirmPassword']"
+    (ngSubmit)="registerForm.form.valid && onSubmit()" novalidate>
+
+        <!-- NAME -->
+        <div class="form-group">
         <label for="name">Name : </label>
-        <input type="text" class="form-control" pattern="/^[a-z ,.'-]+$/i" placeholder="Your name..." name="name" id="name" required>
-      </div>
-      <div class="form-group">
+        <input type="text" class="form-control" [ngModel]="client.name"
+        placeholder="Your name..." name="name" #name="ngModel" required>
+        <span class="text-danger" *ngIf="(name.touched || registerForm.submitted) && name.errors?.required">    
+            Name is required
+        </span>
+        </div>
+
+        <!-- FIRSTNAME -->
+        <div class="form-group">
         <label for="firstname">Firstname : </label>
-        <input type="text" class="form-control" pattern="/^[a-z ,.'-]+$/i" placeholder="Your firstname..." name="firstname" id="firstname" required>
-      </div>
-      <div class="form-group">
+        <input type="text" class="form-control" [ngModel]="client.firstname"
+        placeholder="Your firstname..." name="firstname" #firstname="ngModel" required>
+        <span class="text-danger" *ngIf="(firstname.touched || registerForm.submitted) && firstname.errors?.required">    
+            Firstname is required   
+        </span>
+        </div>
+
+        <!-- ADDRESS -->
+        <div class="form-group">
         <label for="address">Address : </label>
-        <input type="text" class="form-control" name="address" id="address" required>
-      </div>
-      <div class="form-group">
+        <input type="text" class="form-control" [ngModel]="client.address"
+        placeholder="Your address..." name="address" #address="ngModel" required>
+        <span class="text-danger" *ngIf="(address.touched || registerForm.submitted) && address.errors?.required">    
+            Address is required   
+        </span>
+        </div>
+        
+        <!-- POSTAL CODE -->
+        <div class="form-group">
         <label for="postalCode">Postal code : </label>
-        <input type="text" class="form-control" placeholder="Only 5 numbers..." pattern="[0-9]{5}" name="postalCode" id="postalCode" required>
-      </div>
-      <div class="form-group">
+        <input type="text" class="form-control" [ngModel]="client.address"
+        placeholder="Only 5 numbers..." name="postalCode" #postalCode="ngModel" required>
+        <span class="text-danger" *ngIf="(postalCode.touched || registerForm.submitted) && postalCode.errors?.required">    
+            Postal code is required   
+        </span>
+        </div>
+
+        <!-- CITY -->
+        <div class="form-group">
         <label for="city">City : </label>
-        <input type="text" class="form-control" pattern="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$" name="city" id="city" required>
-      </div>
-      <div class="form-group">
+        <input type="text" class="form-control" [ngModel]="client.city" pattern="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$"
+        placeholder="Your city..." name="city" #city="ngModel" required>
+        <span class="text-danger" *ngIf="(city.touched || registerForm.submitted) && city.errors?.required">    
+            City is required   
+        </span>
+        </div>
+
+        <!-- COUNTRY -->
+        <div class="form-group">
         <label for="country">Country : </label>
-        <input type="text" class="form-control" name="country" id="country" required>
-      </div>
-      <div class="form-group">
+        <input type="text" class="form-control" [ngModel]="client.country"
+        placeholder="Your country..." name="country" #country="ngModel" required>
+        <span class="text-danger" *ngIf="(country.touched || registerForm.submitted) && country.errors?.required">    
+            Country is required   
+        </span>
+        </div>
+
+        <!-- PHONE NUMBER -->
+        <div class="form-group">
         <label for="phone">Phone number : </label>
-        <input type="text" class="form-control" pattern="[0-9]{10}" placeholder="Only 10 numbers..." name="phone" id="phone" required>
-      </div>
-      <div class="form-group">
+        <input type="text" class="form-control" [ngModel]="client.phoneNumber" pattern="[0-9]{10}"
+        placeholder="Only 10 numbers..." name="phone" #phoneNumber="ngModel" required>
+        <span class="text-danger" *ngIf="(phoneNumber.touched || registerForm.submitted) && phoneNumber.errors?.required">    
+            Phone number is required   
+        </span>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="form-group">
         <label for="email">Email : </label>
-        <input type="text" class="form-control" name="email" id="email" required>
-      </div>
-      <div class="form-group">
+        <input type="text" class="form-control" [ngModel]="client.email"
+        placeholder="Your email..." name="email" #email="ngModel" required>
+        <span class="text-danger" *ngIf="(email.touched || registerForm.submitted) && email.errors?.required">    
+            Email is required   
+        </span>
+        </div>
+
+        <!-- CIVILITY -->
+        <div class="form-group">
         <label for="civility">Civility : </label>
-        <input type="text" class="form-control" name="civility" id="civility" required>
-      </div>
-      <div class="form-group">
+        <input type="text" class="form-control" [ngModel]="client.civility"
+        placeholder="Sir or Madam..." name="civility" #civility="ngModel" required>
+        <span class="text-danger" *ngIf="(civility.touched || registerForm.submitted) && civility.errors?.required">    
+            Civility is required   
+        </span>
+        </div>
+
+        <!-- LOGIN -->
+        <div class="form-group">
         <label for="login">Login : </label>
-        <input type="text" class="form-control" name="login" id="login" required>
-      </div>
-      <div class="form-group">
+        <input type="text" class="form-control" [ngModel]="client.login"
+        placeholder="Your name on the site..." name="login" #login="ngModel" required>
+        <span class="text-danger" *ngIf="(civility.touched || registerForm.submitted) && civility.errors?.required">    
+            Login is required   
+        </span>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="form-group">
         <label for="password">Password : </label>
-        <input type="password" class="form-control" name="password" id="password" required>
-      </div>
-      <div class="form-group">
+        <input type="password" class="form-control" [ngModel]="client.password"
+        placeholder="Your password..." name="password" #password="ngModel" required>
+        <span class="text-danger" *ngIf="(password.touched || registerForm.submitted) && password.errors?.required">    
+            Password is required   
+        </span> 
+        </div>
+
+        <!-- CONFIRM PASSWORD -->
+        <div class="form-group">
         <label for="confirmPassword">Confirm password : </label>
-        <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" required>
-      </div>
-      <button type="submit" class="btn btn-success">Submit</button>
+        <input type="password" class="form-control" [ngModel]="client.confirmPassword"
+        placeholder="Type again your password..." name="confirmPassword" #confirmPassword="ngModel" required>
+        </div>
+        <span class="text-danger" *ngIf="(confirmPassword.touched || registerForm.submitted) && confirmPassword.errors?.required">    
+            Password is required   
+        </span>
+        <span class="text-danger" *ngIf="confirmPassword.touched && confirmPassword.errors?.passwordMismatch">    
+            Passwords don't match    
+        </span>
+        <button type="submit" class="btn btn-success" (click)="onSubmit">Submit</button>
     </form>
-  </div>
+</div>

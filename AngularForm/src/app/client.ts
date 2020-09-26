@@ -9,9 +9,10 @@ export class Client {
     email: string
     civility: string
     login: string
-    passwd: string
+    password: string
+    confirmPassword: string
 
-    constructor(name: string, firstname: string, address: string, postalCode: string, city: string, country: string, phoneNumber: string, email: string, civility: string, login: string, passwd: string){
+    /*constructor(name: string, firstname: string, address: string, postalCode: string, city: string, country: string, phoneNumber: string, email: string, civility: string, login: string, passwd: string){
         this.name = name;
         this.firstname = firstname;
         this.address = address;
@@ -23,5 +24,6 @@ export class Client {
         this.civility = civility;
         this.login = login;
         this.passwd = passwd;
-    }
+
+    }*/
 }
