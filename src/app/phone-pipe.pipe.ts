@@ -5,17 +5,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class PhonePipePipe implements PipeTransform {
 
-  transform(phone): string {
-    phone = phone.charAt(0) != 0 ? "0" + phone : "" + phone;
 
-    let newStr = "";
-    let i = 0;
 
-    for (; i < Math.floor(phone.length / 2) - 1; i++) {
-      newStr = newStr + phone.substr(i * 2, 2) + "-";
-    }
-
-    return newStr + phone.substr(i * 2);
+  transform(phoneNumber: string): string {
+    let phoneNumberFormatted: string = "(+33) " + phoneNumber.charAt(1) + " " + phoneNumber.substr(2,2) 
+    + " " + phoneNumber.substr(4,2) + " " + phoneNumber.substr(6,2) + " " + phoneNumber.substr(8,2);
+    
+    return phoneNumberFormatted;
   }
-
 }

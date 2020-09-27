@@ -93,13 +93,13 @@
         <!-- PHONE NUMBER -->
         <div class="form-group">
         <label for="phone">Phone number : <span style="color:red">*</span> </label>
-        <input type="text" class="form-control" [(ngModel)]="client.phoneNumber" pattern="[0-9]{10}"
+        <input type="text" class="form-control" [(ngModel)]="client.phoneNumber"
         placeholder="Only 10 numbers..." name="phone" #phoneNumber="ngModel" required>
         <span class="text-danger" *ngIf="(phoneNumber.touched || registerForm.submitted) && phoneNumber.errors?.required">    
             Phone number is required   
         </span>
         </div>
-
+        <div>{{ client.phoneNumber | phonePipe }}</div>
         <!-- EMAIL -->
         <div class="form-group">
         <label for="email">Email : <span style="color:red">*</span> </label>
