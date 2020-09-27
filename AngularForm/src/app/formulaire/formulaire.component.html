@@ -5,22 +5,32 @@
     [appMatchPassword]="['password', 'confirmPassword']"
     (ngSubmit)="registerForm.form.valid && onSubmit()" novalidate>
 
+        <!-- CIVILITY -->
+        <div class="form-group">
+        <label for="civility">Civility : <span style="color:red">*</span> </label>
+        <input type="text" class="form-control" [(ngModel)]="client.civility"
+        placeholder="Your civility..." name="civility" #civility="ngModel" required>
+        <span class="text-danger" *ngIf="(civility.touched || registerForm.submitted) && civility.errors?.required">    
+            civility is required
+        </span>
+        </div>
+
         <!-- NAME -->
         <div class="form-group">
-        <label for="name">Name : </label>
+        <label for="name">Name : <span style="color:red">*</span> </label>
         <input type="text" class="form-control" [(ngModel)]="client.name"
-        placeholder="Your name..." name="name" #name="ngModel" required>
+        placeholder="Your name..." name="name" #name="ngModel" appNamePattern required>
         <span class="text-danger" *ngIf="(name.touched || registerForm.submitted) && name.errors?.required">    
             Name is required
         </span>
-        <span class="text-danger" *ngIf="name.touched && name.errors?.invalidName">    
+        <span class="text-danger" *ngIf="(name.touched || registerForm.submitted) && name.errors?.invalidName">    
             Please enter a valid name
         </span>
         </div>
 
         <!-- FIRSTNAME -->
         <div class="form-group">
-        <label for="firstname">Firstname : </label>
+        <label for="firstname">Firstname : <span style="color:red">*</span> </label>
         <input type="text" class="form-control" [(ngModel)]="client.firstname"
         placeholder="Your firstname..." name="firstname" #firstname="ngModel" required>
         <span class="text-danger" *ngIf="(firstname.touched || registerForm.submitted) && firstname.errors?.required">    
@@ -30,7 +40,7 @@
 
         <!-- ADDRESS -->
         <div class="form-group">
-        <label for="address">Address : </label>
+        <label for="address">Address : <span style="color:red">*</span> </label>
         <input type="text" class="form-control" [(ngModel)]="client.address"
         placeholder="Your address..." name="address" #address="ngModel" required>
         <span class="text-danger" *ngIf="(address.touched || registerForm.submitted) && address.errors?.required">    
@@ -40,8 +50,8 @@
         
         <!-- POSTAL CODE -->
         <div class="form-group">
-        <label for="postalCode">Postal code : </label>
-        <input type="text" class="form-control" [(ngModel)]="client.address"
+        <label for="postalCode">Postal code : <span style="color:red">*</span> </label>
+        <input type="text" class="form-control" [(ngModel)]="client.postalCode"
         placeholder="Only 5 numbers..." name="postalCode" #postalCode="ngModel" required>
         <span class="text-danger" *ngIf="(postalCode.touched || registerForm.submitted) && postalCode.errors?.required">    
             Postal code is required   
@@ -50,7 +60,7 @@
 
         <!-- CITY -->
         <div class="form-group">
-        <label for="city">City : </label>
+        <label for="city">City : <span style="color:red">*</span> </label>
         <input type="text" class="form-control" [(ngModel)]="client.city" pattern="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$"
         placeholder="Your city..." name="city" #city="ngModel" required>
         <span class="text-danger" *ngIf="(city.touched || registerForm.submitted) && city.errors?.required">    
@@ -60,7 +70,7 @@
 
         <!-- COUNTRY -->
         <div class="form-group">
-        <label for="country">Country : </label>
+        <label for="country">Country : <span style="color:red">*</span> </label>
         <input type="text" class="form-control" [(ngModel)]="client.country"
         placeholder="Your country..." name="country" #country="ngModel" required>
         <span class="text-danger" *ngIf="(country.touched || registerForm.submitted) && country.errors?.required">    
@@ -70,7 +80,7 @@
 
         <!-- PHONE NUMBER -->
         <div class="form-group">
-        <label for="phone">Phone number : </label>
+        <label for="phone">Phone number : <span style="color:red">*</span> </label>
         <input type="text" class="form-control" [(ngModel)]="client.phoneNumber" pattern="[0-9]{10}"
         placeholder="Only 10 numbers..." name="phone" #phoneNumber="ngModel" required>
         <span class="text-danger" *ngIf="(phoneNumber.touched || registerForm.submitted) && phoneNumber.errors?.required">    
@@ -80,27 +90,17 @@
 
         <!-- EMAIL -->
         <div class="form-group">
-        <label for="email">Email : </label>
+        <label for="email">Email : <span style="color:red">*</span> </label>
         <input type="text" class="form-control" [(ngModel)]="client.email"
         placeholder="Your email..." name="email" #email="ngModel" required>
         <span class="text-danger" *ngIf="(email.touched || registerForm.submitted) && email.errors?.required">    
             Email is required   
         </span>
-        </div>
-
-        <!-- CIVILITY -->
-        <div class="form-group">
-        <label for="civility">Civility : </label>
-        <input type="text" class="form-control" [(ngModel)]="client.civility"
-        placeholder="Sir or Madam..." name="civility" #civility="ngModel" required>
-        <span class="text-danger" *ngIf="(civility.touched || registerForm.submitted) && civility.errors?.required">    
-            Civility is required   
-        </span>
-        </div>
+        </div>     
 
         <!-- LOGIN -->
         <div class="form-group">
-        <label for="login">Login : </label>
+        <label for="login">Login : <span style="color:red">*</span> </label>
         <input type="text" class="form-control" [(ngModel)]="client.login"
         placeholder="Your name on the site..." name="login" #login="ngModel" required>
         <span class="text-danger" *ngIf="(civility.touched || registerForm.submitted) && civility.errors?.required">    
@@ -110,9 +110,9 @@
 
         <!-- PASSWORD -->
         <div class="form-group">
-        <label for="password">Password : </label>
+        <label for="password">Password : <span style="color:red">*</span> </label>
         <input type="password" class="form-control" [(ngModel)]="client.password"
-        placeholder="Your password..." name="password" #password="ngModel" required>
+        placeholder="Your password..." name="password" #password="ngModel" appPasswordPattern required>
         <span class="text-danger" *ngIf="(password.touched || registerForm.submitted) && password.errors?.required">    
             Password is required   
         </span> 
@@ -120,7 +120,7 @@
 
         <!-- CONFIRM PASSWORD -->
         <div class="form-group">
-        <label for="confirmPassword">Confirm password : </label>
+        <label for="confirmPassword">Confirm password : <span style="color:red">*</span> </label>
         <input type="password" class="form-control" [(ngModel)]="client.confirmPassword"
         placeholder="Type again your password..." name="confirmPassword" #confirmPassword="ngModel" required>
         </div>

@@ -10,6 +10,7 @@ import { RecapitulatifComponent } from './recapitulatif/recapitulatif.component'
 import { NamePatternDirective } from './directives/name-pattern.directive';
 import { PasswordPatternDirective } from './directives/password-pattern.directive';
 import { MatchPasswordDirective } from './directives/match-password.directive';
+import { PhonePipePipe } from './phone-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MatchPasswordDirective } from './directives/match-password.directive';
     RecapitulatifComponent,
     NamePatternDirective,
     PasswordPatternDirective,
-    MatchPasswordDirective
+    MatchPasswordDirective,
+    PhonePipePipe
   ],
   imports: [
     BrowserModule,
