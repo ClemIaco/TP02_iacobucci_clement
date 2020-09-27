@@ -83,9 +83,12 @@
         <div class="form-group">
         <label for="country">Country : <span style="color:red">*</span> </label>
         <input type="text" class="form-control" [(ngModel)]="client.country"
-        placeholder="Your country..." name="country" #country="ngModel" required>
+        placeholder="Your country..." name="country" #country="ngModel" appCountryPattern required>
         <span class="text-danger" *ngIf="(country.touched || registerForm.submitted) && country.errors?.required">    
             Country is required   
+        </span>
+        <span class="text-danger" *ngIf="(country.touched || registerForm.submitted) && country.errors?.invalidCountry">    
+            Please enter a valid country
         </span>
         </div>
 

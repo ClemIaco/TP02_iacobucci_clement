@@ -14,6 +14,7 @@ import { PhonePipePipe } from './phone-pipe.pipe';
 import { PostalCodePatternDirective } from './directives/postal-code-pattern.directive';
 import { CityPatternDirective } from './directives/city-pattern.directive';
 import { EmailPatternDirective } from './directives/email-pattern.directive';
+import { CountryPatternDirective } from './directives/country-pattern.directive';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { EmailPatternDirective } from './directives/email-pattern.directive';
     PhonePipePipe,
     PostalCodePatternDirective,
     CityPatternDirective,
-    EmailPatternDirective
+    EmailPatternDirective,
+    CountryPatternDirective
   ],
   imports: [
     BrowserModule,
