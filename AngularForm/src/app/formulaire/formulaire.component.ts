@@ -1,5 +1,5 @@
-import { ThrowStmt } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Client } from '../client';
 
 @Component({
@@ -10,16 +10,20 @@ import { Client } from '../client';
 export class FormulaireComponent implements OnInit {
 
   client = new Client();
+  @ViewChild('registerForm') clientForm: NgForm;
+  formOk: Boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
-
+    
   }
 
   onSubmit() {  
-    alert('Form Submitted succesfully!!!\n Check the values in browser console.');  
-    console.table(this.client);  
+    if (this.clientForm.valid)
+    {
+      this.formOk = true;
+    }
   }
 
 }

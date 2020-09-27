@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Client } from '../client';
 
 @Component({
   selector: 'app-recapitulatif',
@@ -9,7 +10,11 @@ export class RecapitulatifComponent implements OnInit {
 
   constructor() { }
 
+  @Input() client: Client;
+
+  
   ngOnInit(): void {
+    
   }
 
 }

@@ -39,20 +39,15 @@ export class CustomvalidationsService {
     }  
   }  
   
-  userNameValidator(userControl: AbstractControl) {  
-    return new Promise(resolve => {  
-      setTimeout(() => {  
-        if (this.validateUserName(userControl.value)) {  
-          resolve({ userNameNotAvailable: true });  
-        } else {  
-          resolve(null);  
-        }  
-      }, 1000);  
-    });  
+  NameValidator(name: string) {  
+    return (control: AbstractControl): { [key: string]: any } => {  
+      if (!control.value) {  
+        return null;  
+      }  
+      const regex = new RegExp("/^[a-z ,.'-éèêàâûîïü]+$/i");  
+      const valid = regex.test(control.value);  
+      return valid ? null : { invalidName: true };  
+    };  
   }  
-  
-  validateUserName(userName: string) {  
-    const UserList = ['ankit', 'admin', 'user', 'superuser'];  
-    return (UserList.indexOf(userName) > -1);  
-  }  
+
 } 
