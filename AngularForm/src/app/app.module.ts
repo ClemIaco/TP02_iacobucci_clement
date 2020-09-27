@@ -11,6 +11,9 @@ import { NamePatternDirective } from './directives/name-pattern.directive';
 import { PasswordPatternDirective } from './directives/password-pattern.directive';
 import { MatchPasswordDirective } from './directives/match-password.directive';
 import { PhonePipePipe } from './phone-pipe.pipe';
+import { PostalCodePatternDirective } from './directives/postal-code-pattern.directive';
+import { CityPatternDirective } from './directives/city-pattern.directive';
+import { EmailPatternDirective } from './directives/email-pattern.directive';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { PhonePipePipe } from './phone-pipe.pipe';
     NamePatternDirective,
     PasswordPatternDirective,
     MatchPasswordDirective,
-    PhonePipePipe
+    PhonePipePipe,
+    PostalCodePatternDirective,
+    CityPatternDirective,
+    EmailPatternDirective
   ],
   imports: [
     BrowserModule,

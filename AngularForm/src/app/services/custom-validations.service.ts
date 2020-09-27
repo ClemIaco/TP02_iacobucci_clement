@@ -44,9 +44,42 @@ export class CustomvalidationsService {
       if (!control.value) {  
         return null;  
       }  
-      const regex = new RegExp("/^[a-z ,.'-éèêàâûîïü]+$/i");  
+      const regex = new RegExp("[^0-9]");  
       const valid = regex.test(control.value);  
       return valid ? null : { invalidName: true };  
+    };  
+  }  
+
+  PostalCodeValidator(postalCode: string) {  
+    return (control: AbstractControl): { [key: string]: any } => {  
+      if (!control.value) {  
+        return null;  
+      }  
+      const regex = new RegExp("^\\d{5}$");  
+      const valid = regex.test(control.value);  
+      return valid ? null : { invalidPostalCode: true };  
+    };  
+  }  
+
+ CityValidator(city: string) {  
+    return (control: AbstractControl): { [key: string]: any } => {  
+      if (!control.value) {  
+        return null;  
+      }  
+      const regex = new RegExp("[^0-9]$");  
+      const valid = regex.test(control.value);  
+      return valid ? null : { invalidCity: true };  
+    };  
+  }  
+
+  EmailValidator(email: string) {  
+    return (control: AbstractControl): { [key: string]: any } => {  
+      if (!control.value) {  
+        return null;  
+      }  
+      const regex = new RegExp("[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+");  
+      const valid = regex.test(control.value);  
+      return valid ? null : { invalidEmail: true };  
     };  
   }  
 

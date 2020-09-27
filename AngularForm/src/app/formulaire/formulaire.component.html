@@ -8,11 +8,13 @@
         <!-- CIVILITY -->
         <div class="form-group">
         <label for="civility">Civility : <span style="color:red">*</span> </label>
-        <input type="text" class="form-control" [(ngModel)]="client.civility"
+        <input id="rdbSir" type="radio" value="sir" name="civility"  [(ngModel)]="client.civility"> Sir
+        <input id="rdbMadam" type="radio" value="madam" name="civility"  [(ngModel)]="client.civility"> Madam
+        <!--<input type="text" class="form-control" [(ngModel)]="client.civility"
         placeholder="Your civility..." name="civility" #civility="ngModel" required>
         <span class="text-danger" *ngIf="(civility.touched || registerForm.submitted) && civility.errors?.required">    
             civility is required
-        </span>
+        </span>-->
         </div>
 
         <!-- NAME -->
@@ -32,9 +34,12 @@
         <div class="form-group">
         <label for="firstname">Firstname : <span style="color:red">*</span> </label>
         <input type="text" class="form-control" [(ngModel)]="client.firstname"
-        placeholder="Your firstname..." name="firstname" #firstname="ngModel" required>
+        placeholder="Your firstname..." name="firstname" #firstname="ngModel" appNamePattern required>
         <span class="text-danger" *ngIf="(firstname.touched || registerForm.submitted) && firstname.errors?.required">    
             Firstname is required   
+        </span>
+        <span class="text-danger" *ngIf="(name.touched || registerForm.submitted) && name.errors?.invalidName">    
+            Please enter a valid firstname
         </span>
         </div>
 
@@ -52,19 +57,25 @@
         <div class="form-group">
         <label for="postalCode">Postal code : <span style="color:red">*</span> </label>
         <input type="text" class="form-control" [(ngModel)]="client.postalCode"
-        placeholder="Only 5 numbers..." name="postalCode" #postalCode="ngModel" required>
+        placeholder="Only 5 numbers..." name="postalCode" #postalCode="ngModel" appPostalCodePattern required>
         <span class="text-danger" *ngIf="(postalCode.touched || registerForm.submitted) && postalCode.errors?.required">    
             Postal code is required   
+        </span>
+        <span class="text-danger" *ngIf="(postalCode.touched || registerForm.submitted) && postalCode.errors?.invalidPostalCode">    
+            Please enter a valid postal code
         </span>
         </div>
 
         <!-- CITY -->
         <div class="form-group">
         <label for="city">City : <span style="color:red">*</span> </label>
-        <input type="text" class="form-control" [(ngModel)]="client.city" pattern="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$"
-        placeholder="Your city..." name="city" #city="ngModel" required>
+        <input type="text" class="form-control" [(ngModel)]="client.city"
+        placeholder="Your city..." name="city" #city="ngModel" appCityPattern required>
         <span class="text-danger" *ngIf="(city.touched || registerForm.submitted) && city.errors?.required">    
             City is required   
+        </span>
+        <span class="text-danger" *ngIf="(city.touched || registerForm.submitted) && city.errors?.invalidCity">    
+            Please enter a valid city
         </span>
         </div>
 
@@ -92,9 +103,12 @@
         <div class="form-group">
         <label for="email">Email : <span style="color:red">*</span> </label>
         <input type="text" class="form-control" [(ngModel)]="client.email"
-        placeholder="Your email..." name="email" #email="ngModel" required>
+        placeholder="Your email..." name="email" #email="ngModel" appEmailPattern required>
         <span class="text-danger" *ngIf="(email.touched || registerForm.submitted) && email.errors?.required">    
             Email is required   
+        </span>
+        <span class="text-danger" *ngIf="(email.touched || registerForm.submitted) && email.errors?.invalidEmail">    
+            Please enter a valid email
         </span>
         </div>     
 
@@ -103,7 +117,7 @@
         <label for="login">Login : <span style="color:red">*</span> </label>
         <input type="text" class="form-control" [(ngModel)]="client.login"
         placeholder="Your name on the site..." name="login" #login="ngModel" required>
-        <span class="text-danger" *ngIf="(civility.touched || registerForm.submitted) && civility.errors?.required">    
+        <span class="text-danger" *ngIf="(login.touched || registerForm.submitted) && login.errors?.required">    
             Login is required   
         </span>
         </div>
@@ -112,7 +126,7 @@
         <div class="form-group">
         <label for="password">Password : <span style="color:red">*</span> </label>
         <input type="password" class="form-control" [(ngModel)]="client.password"
-        placeholder="Your password..." name="password" #password="ngModel" appPasswordPattern required>
+        placeholder="Your password..." name="password" #password="ngModel" required>
         <span class="text-danger" *ngIf="(password.touched || registerForm.submitted) && password.errors?.required">    
             Password is required   
         </span> 
