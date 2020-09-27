@@ -8,13 +8,11 @@
         <!-- CIVILITY -->
         <div class="form-group">
         <label for="civility">Civility : <span style="color:red">*</span> </label>
-        <input id="rdbSir" type="radio" value="sir" name="civility"  [(ngModel)]="client.civility"> Sir
-        <input id="rdbMadam" type="radio" value="madam" name="civility"  [(ngModel)]="client.civility"> Madam
-        <!--<input type="text" class="form-control" [(ngModel)]="client.civility"
-        placeholder="Your civility..." name="civility" #civility="ngModel" required>
-        <span class="text-danger" *ngIf="(civility.touched || registerForm.submitted) && civility.errors?.required">    
-            civility is required
-        </span>-->
+        <input id="rdbSir" type="radio" value="sir" name="civility" #civility="ngModel" [(ngModel)]="client.civility" required> Sir
+        <input id="rdbMadam" type="radio" value="madam" name="civility"  #civility="ngModel" [(ngModel)]="client.civility" required> Madam
+        <span id="spnCivility" class="text-danger" *ngIf="(civility.touched || registerForm.submitted) && civility.errors?.required">    
+            Civility is required
+        </span>
         </div>
 
         <!-- NAME -->
